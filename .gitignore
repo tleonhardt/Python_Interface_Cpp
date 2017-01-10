@@ -90,3 +90,6 @@ ENV/
 
 # Mac OS X
 .DS_Store
+
+# IntelliJ IDEs such as PyCharm
+.idea
