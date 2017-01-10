@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding=utf-8
 """ Python wrapper to time the Cython implementation for computing the nth fibonacci number
 in a non-recursive fashion.
 """

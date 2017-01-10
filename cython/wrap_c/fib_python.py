@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+# coding=utf-8
 """ Pure Python implementation for computing the nth fibonacci number in a
 non-recursive fashion.
 """
+
 
 def compute_fibonacci(n):
     """
@@ -15,6 +17,7 @@ def compute_fibonacci(n):
         a = a + b
         b = intermediate
     return a
+
 
 if __name__ == '__main__':
     import sys
@@ -35,7 +38,7 @@ if __name__ == '__main__':
         pass
 
     total_time = timeit.timeit("compute_fibonacci({})".format(n),
-                        setup="from __main__ import compute_fibonacci",
-                        number=number_of_times)
+                               setup="from __main__ import compute_fibonacci",
+                               number=number_of_times)
     avg_time = total_time / number_of_times
     print("fib({0}) = {1}  [average execution time: {2:.2g} s]".format(n, fib_n, avg_time))

@@ -1,7 +1,8 @@
+# coding=utf-8
 from setuptools import setup
 from Cython.Build import cythonize
 
 setup(
-    name = "cyfib",
-    ext_modules = cythonize('cyfib.pyx', compiler_directives={'embedsignature': True}),
+    name="cyfib",
+    ext_modules=cythonize('cyfib.pyx', compiler_directives={'embedsignature': True}),
 )

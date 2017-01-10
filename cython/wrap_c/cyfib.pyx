@@ -1,3 +1,4 @@
+# coding=utf-8
 # distutils: libraries = "fibonacci"
 # distutils: library_dirs = "."
 cimport cfib

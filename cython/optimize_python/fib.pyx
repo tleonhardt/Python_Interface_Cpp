@@ -1,3 +1,4 @@
+# coding=utf-8
 """ Cython implementation for computing the nth fibonacci number in a
 non-recursive fashion.
 """
@@ -9,6 +10,6 @@ cpdef int compute_fibonacci_cython(int n):
     a, b = 1, 1
     for x in range(n):
         intermediate = a
-        a = a + b
+        a += b
         b = intermediate
     return a
