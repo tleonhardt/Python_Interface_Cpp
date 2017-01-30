@@ -5,7 +5,9 @@
 
 #pragma once
 
-typedef int dtype;
+#include <stdint.h>
+
+typedef uint32_t dtype;
 
 struct MsgMetaData
 {
