@@ -1,0 +1,8 @@
+fibonacci_c
+fibonacci.py
+fibonacci_wrap.c
+*.egg-info
+*.o
+Makefile
+*.bundle
+.RUBYARCHDIR.time
