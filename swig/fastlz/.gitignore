@@ -1,0 +1,5 @@
+fastlz_c
+fastlz.py
+fastlz_wrap.c
+*.egg-info
+*.o
