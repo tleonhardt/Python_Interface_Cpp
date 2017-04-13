@@ -3,7 +3,7 @@
 """ Python wrapper to time the pybind11 wrapper for computing the nth fibonacci number
 in a non-recursive fashion and compare it to the pure Python implementation.
 """
-# import fibonacci
+import fibonacci
 import fib_python
 
 if __name__ == '__main__':
