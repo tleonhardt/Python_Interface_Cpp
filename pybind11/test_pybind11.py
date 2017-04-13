@@ -30,7 +30,7 @@ if __name__ == '__main__':
     py_tot = timeit.timeit("compute_fibonacci({})".format(n),
                            setup="from fib_python import compute_fibonacci",
                            number=number_of_times)
-    pybind11_tot = timeit.timeit("fibonacci.compute_fibonacci(n))".format(n),
+    pybind11_tot = timeit.timeit("fibonacci.compute_fibonacci({})".format(n),
                              setup="""import fibonacci""",
                              number=number_of_times)
     py_avg = py_tot / number_of_times
