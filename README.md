@@ -20,18 +20,15 @@ means that code ran twice as fast as the pure Python version.
 
 | Tool               | Speedup |
 | ------------------ | -------:|
-| Cython (optimized) | 30      |
-| C                  | 28      |
-| Cython (wrapper)   | 27      |
-| SWIG               | 15      |
-| CFFI               |  6      |
+| Cython (optimized) | 27      |
+| Cython (wrapper)   | 25      |
+| SWIG               | 13      |
+| pybind11           | 10      |
+| CFFI               |  7      |
 | Python             |  1      |
 
 NOTE: These numbers were measured on a 2013 15" Mac Book Pro using Python 3.6 via Anaconda distro
 with the latest versions of all tools installed using the conda package manager.
-
-And yes, the Cython version actually runs faster than my hand-coded (in the obvious way) pure C
-implementation.
 
 The Fibonacci example presented here is pretty trivial.  Your mileage may vary depending on your
 application.  But overall these performance measurements are fairly representative of what you
@@ -93,13 +90,23 @@ PyPy because either Cython or SWIG tend to be a better fit for most applications
 
 ## pybind11
 pybind11 is essentially what arose from the ashes of Boost.Python.  It is the newest of the tools
-presented here, but it is already dramatically better, more stable, and easier to use than
+presented here, but it is already better than
 Boost.Python ever was.
 
 It only works with modern C++11 compilers.
 
-My experience is limited with this tool so far, but it appears to be under rapid development
-and is definitely a tool to watch.
+My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6 and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X 10.12.4.
+
+I also couldn't get it working on either Ubuntu 16.04 or 16.04 with either Python 2.7 or 3.6.
+
+I was able to get it working on Debian 9 with both Python 2.7 and 3.5 as installed from apt-get.
+
+Given that experience I wouldn't even consider it remotely stable yet.
+
+The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.  So at this time
+I don't really see a niche for this tool yet.
+
+But it does appear to be under very rapid development, so maybe it will get better ...
 
 # Conclusion / Recommendations
 Ok, here are some of my thoughts.  They are my opinions and are hence subjective in nature, though
@@ -115,4 +122,4 @@ C/C++ code and Cython is the clear winner if you want to optimize existing Pytho
 CFFI is pretty lame unless you are using PyPy.  But it is super easy to use with near zero learning curve.
 So if you just want to call a function or two from an existing C library, it may be your best bet.
 
-pybind11 ... I'll update this once I have more experience under my belt using it.
+pybind11 seems like an unstable frustrating headache at this juncture.  Also, its performance is worse than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.  But check back in the future, it is very new and is likely to improve.
