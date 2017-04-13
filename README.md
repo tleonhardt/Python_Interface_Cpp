@@ -22,7 +22,7 @@ means that code ran twice as fast as the pure Python version.
 | ------------------ | -------:|
 | Cython (optimized) | 27      |
 | Cython (wrapper)   | 25      |
-| SWIG               | 13      |
+| SWIG               | 14      |
 | pybind11           | 10      |
 | CFFI               |  7      |
 | Python             |  1      |
