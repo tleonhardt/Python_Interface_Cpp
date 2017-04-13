@@ -124,6 +124,6 @@ C/C++ code and Cython is the clear winner if you want to optimize existing Pytho
 CFFI is pretty lame unless you are using PyPy.  But it is super easy to use with near zero learning curve.
 So if you just want to call a function or two from an existing C library, it may be your best bet.
 
-pybind11 seems like an unstable frustrating headache at this juncture.  Also, its performance is worse 
+pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse 
 than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
 But check back in the future, it is very new and is likely to improve.
