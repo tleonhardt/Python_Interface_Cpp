@@ -95,16 +95,18 @@ Boost.Python ever was.
 
 It only works with modern C++11 compilers.
 
-My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6 and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X 10.12.4.
+My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6 
+and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X 
+10.12.4.
 
-I also couldn't get it working on either Ubuntu 16.04 or 16.04 with either Python 2.7 or 3.6.
+I also could not get it working on either Ubuntu 16.04 or 14.04 with either Python 2.7 or 3.6.
 
 I was able to get it working on Debian 9 with both Python 2.7 and 3.5 as installed from apt-get.
 
 Given that experience I wouldn't even consider it remotely stable yet.
 
-The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.  So at this time
-I don't really see a niche for this tool yet.
+The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.  
+So at this time I don't really see a niche for this tool yet.
 
 But it does appear to be under very rapid development, so maybe it will get better ...
 
@@ -112,9 +114,9 @@ But it does appear to be under very rapid development, so maybe it will get bett
 Ok, here are some of my thoughts.  They are my opinions and are hence subjective in nature, though
 they are grounded in my having actually evaluated these tools at length.  
 
-If what you care about most is performance, then Cython is the clear winner by a wide margin.  But on the
-flip side, this tool has the largest learning curve, at least if you are looking at wrapping existing
-C++ code.
+If what you care about most is performance, then Cython is the clear winner by a wide margin.  But on 
+the flip side, this tool has the largest learning curve, at least if you are looking at wrapping 
+existing C++ code.
 
 If what you care about most is productivity, then SWIG is the clear winner if you want to wrap existing
 C/C++ code and Cython is the clear winner if you want to optimize existing Python code.
@@ -122,4 +124,6 @@ C/C++ code and Cython is the clear winner if you want to optimize existing Pytho
 CFFI is pretty lame unless you are using PyPy.  But it is super easy to use with near zero learning curve.
 So if you just want to call a function or two from an existing C library, it may be your best bet.
 
-pybind11 seems like an unstable frustrating headache at this juncture.  Also, its performance is worse than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.  But check back in the future, it is very new and is likely to improve.
+pybind11 seems like an unstable frustrating headache at this juncture.  Also, its performance is worse 
+than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
+But check back in the future, it is very new and is likely to improve.
