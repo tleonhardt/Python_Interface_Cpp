@@ -24,10 +24,12 @@ Install the free **XCode** developer tools from the App Store.  Make sure you ru
 say "yes" if it asks you if you want to install the command-line tools.
 
 ### Windows
-**At this time, the build scripts in this repository are all setup to work on Mac OS X or Linux.  So if you are using
-Windows, we recommend using VMware Workstation/Player or Virtualbox to install a Linux Virtual 
-Machine (VM).**  *We will consider converting to a CMake-based build system in the near future which
-would enable consistent compilation across OSes.*
+**At this time, the build scripts in this repository are all setup to work on Mac OS X or Linux.  So if you 
+are using Windows, we recommend using 
+[VMware Player](http://www.vmware.com/products/player/playerpro-evaluation.html) or 
+[Virtualbox](https://www.virtualbox.org) to install a Linux Virtual Machine (VM).**  
+*We will consider converting to a CMake-based build system in the near future which would enable 
+consistent compilation across OSes.*
 
 There are a number of options for Windows, but the simplest is 
 [MinGW](https://sourceforge.net/projects/mingw/).
