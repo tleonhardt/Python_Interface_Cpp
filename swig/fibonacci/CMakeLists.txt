@@ -1,0 +1,20 @@
+# This is a CMake example for SWIG and Python
+cmake_minimum_required(VERSION 3.8)
+
+FIND_PACKAGE(SWIG REQUIRED)
+INCLUDE(${SWIG_USE_FILE})
+
+FIND_PACKAGE(PythonLibs)
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+
+SET(CMAKE_SWIG_FLAGS "")
+
+SET_SOURCE_FILES_PROPERTIES(fibonacci.i PROPERTIES SWIG_FLAGS "-includeall")
+
+SWIG_ADD_LIBRARY(fibonacci
+                 LANGUAGE python
+                 SOURCES fibonacci.i fibonacci.c)
+
+SWIG_LINK_LIBRARIES(fibonacci ${PYTHON_LIBRARIES})
