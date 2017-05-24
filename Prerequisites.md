@@ -31,14 +31,12 @@ are using Windows, we recommend using
 *We will consider converting to a CMake-based build system in the near future which would enable 
 consistent compilation across OSes.*
 
-There are a number of options for Windows, but the simplest is 
-[MinGW](https://sourceforge.net/projects/mingw/).
-Download that and install it to C:\MinGW.  Then add C:\MinGW\bin to your PATH environment variable.
-And do the following in a terminal:
+There are a number of options for Windows, but by far the simplest is to use the same compiler which
+Python itself was compiled with.  For recent versions of Python released within the past couple years, 
+this is Visual C++ 2015, which comes with Visual Studio 2015.  However, Visual Studio 2017 is now out
+and newer versions of Python will likely be compiled with that.  Unfortunately, to download Visual 
+Studio 2015 at this point requires an MSDN subscription.
 
-```bash
-copy C:\MinGW\bin\gcc.exe C:\MinGW\bin\cc.exe
-```
 
 ## Python and Other Tools
 By far the easiest way to get all of the tools installed and setup is by using the Anaconda Python
