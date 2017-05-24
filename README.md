@@ -127,3 +127,10 @@ So if you just want to call a function or two from an existing C library, it may
 pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse 
 than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
 But check back in the future, it is very new and is likely to improve.
+
+# Running Example Code Yourself
+For information on getting all of the necessary prerequisites installed, see 
+[Prerequisites for Running Example Code](https://github.com/tleonhardt/Python_Interface_Cpp/blob/master/Prerequisites.md).
+
+For info on who to build and run each particular example, see the **Readme.md** in the example directory.
+
