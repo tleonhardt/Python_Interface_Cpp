@@ -3,8 +3,12 @@
 """ Python wrapper to time the CFFI wrapper for computing the nth fibonacci number
 in a non-recursive fashion and compare it to the pure Python implementation.
 """
+import os
+
 import cffi
+
 import fib_python
+
 
 if __name__ == '__main__':
     import sys
@@ -29,7 +33,7 @@ if __name__ == '__main__':
     ffi.cdef('int compute_fibonacci(int n);')
 
     # Load and return a dynamic library.  The standard C library can be loaded by passing None.
-    libfib = ffi.dlopen('./libfibonacci.so')
+    libfib = ffi.dlopen(os.path.join('.', 'libfibonacci.so'))
 
     fib_py = fib_python.compute_fibonacci(n)
     fib_cffi = libfib.compute_fibonacci(n)
