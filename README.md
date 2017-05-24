@@ -132,5 +132,5 @@ But check back in the future, it is very new and is likely to improve.
 For information on getting all of the necessary prerequisites installed, see 
 [Prerequisites for Running Example Code](https://github.com/tleonhardt/Python_Interface_Cpp/blob/master/Prerequisites.md).
 
-For info on who to build and run each particular example, see the **Readme.md** in the example directory.
+For info on how to build and run each particular example, see the **Readme.md** in the example directory.
 
