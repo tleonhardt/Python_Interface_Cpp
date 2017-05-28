@@ -90,7 +90,7 @@ Try adding static types for all function arguments and all local variables.  I r
 floating point types since the Python **float** type corresponds to a C **double**.  Once you have done
 this, recompile your Cython code and re-run **cython_speedup.py**.
 
-This results in a TBD times speedup over the pure Python version.
+This results in a 2.5 times speedup over the pure Python version.
 
 
 ## Step 4 - Typing Functions
@@ -120,7 +120,7 @@ objects). In fact, cpdef does not just provide a Python wrapper, it also install
 method to be overridden by python methods, even when called from within cython. This does add a tiny 
 overhead compared to cdef methods.
 
-Speedup: TBD times over pure Python.
+Speedup: 5 times over pure Python.
 
 
 ## Step 5 - Replacing Python standard library calls with C library calls
@@ -136,4 +136,4 @@ from libc.math cimport cos
 
 We can replace the "from math import cos" line with the above for further performance improvements.
 
-Speedup: TBD times over pure Python.
+Speedup: 28 times over pure Python.
