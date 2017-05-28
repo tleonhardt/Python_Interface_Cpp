@@ -3,6 +3,7 @@
 Pure Python code for numerically integrating a function.
 """
 from libc.math cimport cos
+import cython
 
 
 cdef double f(double x):
@@ -13,7 +14,7 @@ cdef double f(double x):
     """
     return cos(x)
 
-
+@cython.cdivision(True)
 cpdef double integrate_f(double a, double b, int N):
     """Numerically integrate function f starting at point a and going to point b, using N rectangles.
 
