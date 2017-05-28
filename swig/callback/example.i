@@ -4,8 +4,8 @@
 #include "example.h"
 %}
 
-/* turn on director wrapping Callback */
-%feature("director") Callback;
+/* turn on director wrapping Logger */
+%feature("director") Logger;
 
 %include "example.h"
 

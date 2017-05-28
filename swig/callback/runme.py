@@ -5,53 +5,43 @@ This file illustrates the cross language polymorphism using directors.
 import example
 
 
-class PyCallback(example.Callback):
+class PyLogger(example.Logger):
 
     def __init__(self):
-        example.Callback.__init__(self)
+        example.Logger.__init__(self)
 
-    def run(self):
-        print("PyCallback.run()")
+    def log(self):
+        print("PyLogger.log()")
 
-# Create an Caller instance
+# Create an instance of the C++ Log class, which has a pointer to a C++ Logger class within it
+log = example.Log()
 
-caller = example.Caller()
+# Add a simple C++ Logger (log owns the Logger, so we disown it first by clearing the .thisown flag).
+print("Adding and calling a normal C++ Logger")
+print("--------------------------------------")
+logger = example.Logger()
+logger.thisown = 0
+log.setLogger(logger)
+log.log()
+log.delLogger()
 
-# Add a simple C++ callback (caller owns the callback, so
-# we disown it first by clearing the .thisown flag).
-
-print("Adding and calling a normal C++ callback")
-print("----------------------------------------")
-
-callback = example.Callback()
-callback.thisown = 0
-caller.setCallback(callback)
-caller.call()
-caller.delCallback()
-
+# Add a Python Logger (log owns the logger, so we disown it first by calling __disown__).
 print()
-print("Adding and calling a Python callback")
-print("------------------------------------")
-
-# Add a Python callback (caller owns the callback, so we
-# disown it first by calling __disown__).
-
-caller.setCallback(PyCallback().__disown__())
-caller.call()
-caller.delCallback()
-
-print()
-print("Adding and calling another Python callback")
-print("------------------------------------------")
+print("Adding and calling a Python Logger")
+print("----------------------------------")
+log.setLogger(PyLogger().__disown__())
+log.log()
+log.delLogger()
 
 # Let's do the same but use the weak reference this time.
-
-callback = PyCallback().__disown__()
-caller.setCallback(callback)
-caller.call()
-caller.delCallback()
+print()
+print("Adding and calling another Python logger")
+print("------------------------------------------")
+logger = PyLogger().__disown__()
+log.setLogger(logger)
+log.log()
+log.delLogger()
 
 # All done.
-
 print()
 print("python exit")

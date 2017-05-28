@@ -2,23 +2,23 @@
 
 #include <iostream>
 
-class Callback
+class Logger
 {
 public:
-    virtual ~Callback() { std::cout << "Callback::~Callback()" << std:: endl; }
-    virtual void run() { std::cout << "Callback::run()" << std::endl; }
+    virtual ~Logger() { std::cout << "Logger::~Logger()" << std:: endl; }
+    virtual void log() { std::cout << "Logger::log()" << std::endl; }
 };
 
 
-class Caller
+class Log
 {
 private:
-    Callback *_callback;
+    Logger *_logger;
 public:
-    Caller(): _callback(nullptr) {}
-    ~Caller() { delCallback(); }
-    void delCallback() { delete _callback; _callback = 0; }
-    void setCallback(Callback *cb) { delCallback(); _callback = cb; }
-    void call() { if (_callback) _callback->run(); }
+    Log(): _logger(nullptr) {}
+    ~Log() { delLogger(); }
+    void delLogger() { delete _logger; _logger = nullptr; }
+    void setLogger(Logger *cb) { delLogger(); _logger = cb; }
+    void log() { if (_logger) _logger->log(); }
 };
 
