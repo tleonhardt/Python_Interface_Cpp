@@ -1,8 +1,9 @@
 # Python_Interface_Cpp
-Example code for interfacing with C and C++ from Python using Cython, SWIG, CFFI, and pybind11:
+Example code for interfacing with C and C++ from Python using Cython, SWIG, PyPy, CFFI, and pybind11:
 
 * [Cython](http://cython.org)
 * [SWIG](http://www.swig.org)
+* [PyPy](https://pypy.org)
 * [CFFI](http://cffi.readthedocs.io)
 * [pybind11](https://github.com/pybind/pybind11)
 
@@ -20,11 +21,13 @@ means that code ran twice as fast as the pure Python version.
 
 | Tool               | Speedup |
 | ------------------ | -------:|
+| pypy + CFFI        | 40      |
 | Cython (optimized) | 27      |
 | Cython (wrapper)   | 25      |
 | SWIG               | 14      |
 | pybind11           | 10      |
-| CFFI               |  7      |
+| pypy               |  8      |
+| CFFI               |  6      |
 | Python             |  1      |
 
 NOTE: These numbers were measured on a 2013 15" Mac Book Pro using Python 3.6 via Anaconda distro
@@ -75,6 +78,19 @@ SWIG is the granddaddy of all of the tools here.  It has been around for a long 
 long it has been around and the wealth of target languages, it is probably the most widely used
 of these tools.
 
+## PyPy
+PyPy is a fast, compliant alternative implementation of the Python language (2.7.13 and 3.5.3) in Python. 
+The normal implementation of Python is in C and is referred to as CPython.  PyPy uses a Just-in-Time (JIT) 
+compiler, so Python programs often run significantly faster on PyPy.  It also employs various memory 
+optimizations compared to CPython.
+
+The major advantage of PyPy is that it can deliver some quick and easy wins.  You don't need to change
+your existing Python code in any way!  You just install PyPy and run your Python program using **pypy**
+instead of **python**.
+    
+The major disadvantage of PyPy is that not all 3rd-party Python libraries work with PyPy.  Detailed 
+information on which modules are compatible can be found [here](https://pypy.org/compat.html).
+
 ## CFFI
 CFFI is the C Foreign Function Interface for Python.  It is basically an improved version of
 Python's built-in ctypes.  
@@ -82,11 +98,14 @@ Python's built-in ctypes.
 It can call functions in a C dynamic library just by writing code inline in Python.  There
 isn't any sort of need for an external wrapper.  Hence, it is the quickest and easiest
 of these libraries to use to interface with existing C dynamic libraries.  However, the
-performance is decidedly worse than the other options presented here.
+performance is decidedly worse than the other options presented here unless it is used in combination
+with PyPy, in which case the performance is truly excellent.
 
-Its real strength lies in 100% compatibility with PyPy.  So it is the go-to choice if you are
+Its real strength lies in 100% compatibility with PyPy and lower overhead present when using CFFI 
+with PyPy'sJIT.  So it is the go-to choice if you are
 using the PyPy JIT.  That being said, I don't think I would recommend using it if you aren't using
-PyPy because either Cython or SWIG tend to be a better fit for most applications.
+PyPy because either Cython or SWIG tend to be a better fit for most applications when used with
+the normal CPython implementation of Python.
 
 ## pybind11
 pybind11 is essentially what arose from the ashes of Boost.Python.  It is the newest of the tools
@@ -121,8 +140,15 @@ existing C++ code.
 If what you care about most is productivity, then SWIG is the clear winner if you want to wrap existing
 C/C++ code and Cython is the clear winner if you want to optimize existing Python code.
 
+If all of the 3rd-party Python libraries you are using are compatible with PyPy, then using PyPy can
+provide a painless performance boost for free.  Given that there are no code changes required to use it,
+it is very much worth trying it and seeing what sort of speedup you get.
+
 CFFI is pretty lame unless you are using PyPy.  But it is super easy to use with near zero learning curve.
-So if you just want to call a function or two from an existing C library, it may be your best bet.
+So if you just want to call a function or two from an existing C library, it may be your best bet.  On
+the other hand, if all of the 3rd party libraries you are using work with PyPy and you only want to
+interface with C code (not C++), then the combination of PyPy + CFFI can result in some truly impressive
+performance improvements.
 
 pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse 
 than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
