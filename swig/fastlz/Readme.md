@@ -1,6 +1,6 @@
-This code doesn't work yet.
 This code uses SWIG to wrap C functions which take pointers to arrays as both IN and INOUT arguments.
-The idea is to use the numpy.i typemaps and numpy to make it relatively easy.
+But it does so by having the user create intermediate C++ wrapper functions which take and
+return std::vector arguments.
 
 
 # Interfacing with C code from Python using SWIG

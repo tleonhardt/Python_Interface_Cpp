@@ -9,6 +9,6 @@ setup(name=name, version=version,
       ext_modules=[Extension(name='_{}'.format(name),  # SWIG requires _ as a prefix for the module name
                              sources=["fastlz.i", "fastlz.c"],
                              include_dirs=[],
-                             extra_compile_args=["-std=c11"],
-                             swig_opts=[])
+                             extra_compile_args=["-std=c++11"],
+                             swig_opts=['-c++'])
                    ])
