@@ -6,5 +6,5 @@ from libc.stdint cimport uint8_t
 
 
 cdef extern from "fastlz.h":
-    # TODO: Copy function prototypes you want to wrap from the C header file here (without ending semicolon)
-
+    int fastlz_compress(const uint8_t* inBuf, int length, uint8_t* output)
+    int fastlz_decompress(const uint8_t* inBuf, int length, uint8_t* output, int maxout)

@@ -20,11 +20,14 @@ cpdef bytes compress(bytes in_buf):
     # Create the output buffer
     output = bytearray(M)
 
-    # TODO: Call cfastlz.fastlz_compress().  Make sure to get the return value and to cast Python array type to C type.
+    # wrap byte arrays to c arrays for the call
+    fcret = cfastlz.fastlz_compress(<const uint8_t*>in_buf, N, <uint8_t*> output)
 
-    # TODO: Check for invalid return value and return None if that occurs
+    if fcret <=0:
+        return None
 
-    # TODO: Return the compressed data as a bytes object
+    # Return the compressed data as a bytes object
+    return bytes(output[:fcret])
 
 
 cpdef bytes decompress(bytes in_buf):
@@ -40,8 +43,12 @@ cpdef bytes decompress(bytes in_buf):
     M = max(int(4*N), 66)
     output = bytearray(M)
 
-    # TODO: Call cfastlz.fastlz_decompress().  Make sure to get the return value and to cast Python array type to C type.
+    # wrap byte arrays to c arrays for the call
+    fcret = cfastlz.fastlz_decompress(<const uint8_t*> in_buf, N, <uint8_t*> output, M)
 
-    # TODO: Check for invalid return value and return None if that occurs
+    # If error occurs, e.g. the compressed data is corrupted or the output buffer is not large enough, then 0 (zero)
+    if fcret <=0:
+        return None
 
-    # TODO: Return the uncompressed data as a bytes object
+    # Return the uncompressed data as a bytes object
+    return bytes(output[:fcret])
