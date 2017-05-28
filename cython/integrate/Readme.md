@@ -69,6 +69,9 @@ What you want to do is get rid of as much yellow as possible and end up with as 
 matters particularly inside loops.  The main way you get rid of these interactions with the Python interpreter
 is to declare optional C static types, so Cython can use them to generate fast C code.
 
+After each optimization step in this exercise, you should re-examine the HTML annotation file and let
+the remaining yellow lines guide your next optimization step.
+
 
 ## Step 3 - Typing Variables
 As we saw, simply compiling this code in Cython merely gives a 60% speedup. This is better than nothing, 
