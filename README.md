@@ -102,7 +102,7 @@ performance is decidedly worse than the other options presented here unless it i
 with PyPy, in which case the performance is truly excellent.
 
 Its real strength lies in 100% compatibility with PyPy and lower overhead present when using CFFI 
-with PyPy'sJIT.  So it is the go-to choice if you are
+with PyPy's JIT.  So it is the go-to choice if you are
 using the PyPy JIT.  That being said, I don't think I would recommend using it if you aren't using
 PyPy because either Cython or SWIG tend to be a better fit for most applications when used with
 the normal CPython implementation of Python.
