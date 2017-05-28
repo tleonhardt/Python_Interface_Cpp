@@ -137,3 +137,29 @@ from libc.math cimport cos
 We can replace the "from math import cos" line with the above for further performance improvements.
 
 Speedup: 28 times over pure Python.
+
+
+## Step 6 - Tell Cython to disable unnecessary safety checks
+Python has a bunch of built in "safety" checks which aren't present in C.  It checks for things like
+division by zero, accessing an array out of bounds, integer overflow, etc.  Unless you tell Cython you
+don't want it to do this sort of checking, it will continue to do it just like Python.
+
+If you know your code is safe and Cython doesn't need to do these sorts of checks, you can inform Cython
+of this to get some extra performance boost.
+
+In our example, there is one last nagging line of yellow, which if we expand it is due to a floating point
+division check.  Since this isn't in the loop, disabling this check won't buy us much here, but if it
+were in the loop it would make a difference.  Regardless, it is good to know how to tell Cython to do this
+sort of thing.
+
+So to disable the floating point division check for a particular function, you can do this:
+
+```python
+import cython
+
+@cython.cdivision(True)
+cpdef double integrate_f(double a, double b, int N):
+    ...
+```
+
+Look here for more info: [Cython compiler directives](http://cython.readthedocs.io/en/latest/src/reference/compilation.html#compiler-directives)
