@@ -68,3 +68,24 @@ the following in a command-line terminal:
 ```bash
 conda install swig
 ```
+
+## PyPy
+PyPy is best installed with a package manager such as *brew* on Mac OS X or *apt-get** on many Linux distros.
+
+### PyPy on Mac
+Use the Homebrew package manager to install
+
+```bash
+brew install pypy
+```
+
+### PyPy on Linux
+Use your the package manager which comes your distro to install pypy.  For example, on Debian, Ubuntu, or Mint
+distros:
+
+```bash
+sudo apt-get install pypy
+```
+
+### PyPy on Windows
+Download a Windows binary from the PyPy website:  http://pypy.org/download.html
