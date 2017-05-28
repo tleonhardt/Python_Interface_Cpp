@@ -36,6 +36,7 @@ if __name__ == '__main__':
     logger.thisown = 0
     log.setLogger(logger)
     log.inf("Hello")
+    log.log(5, "Yo")
     log.delLogger()
 
     # Add a Python Logger (log owns the logger, so we disown it first by calling __disown__).
