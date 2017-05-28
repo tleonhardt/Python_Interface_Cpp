@@ -2,6 +2,8 @@
 # distutils: libraries = "fastlz"
 # distutils: library_dirs = "."
 cimport cfastlz
+from libc.stdint cimport uint8_t
+
 
 cpdef bytes compress(bytes in_buf):
     cdef int N, M
@@ -19,13 +21,14 @@ cpdef bytes compress(bytes in_buf):
     output = bytearray(M)
 
     # wrap byte arrays to c arrays for the call
-    fcret = cfastlz.fastlz_compress(<const unsigned char*>in_buf, N, <unsigned char*> output)
+    fcret = cfastlz.fastlz_compress(<const uint8_t*>in_buf, N, <uint8_t*> output)
 
     if fcret <=0:
         return None
 
     # Return the compressed data as a bytes object
     return bytes(output[:fcret])
+
 
 cpdef bytes decompress(bytes in_buf):
     cdef int N, M
@@ -41,7 +44,7 @@ cpdef bytes decompress(bytes in_buf):
     output = bytearray(M)
 
     # wrap byte arrays to c arrays for the call
-    fcret = cfastlz.fastlz_decompress(<const unsigned char*> in_buf, N, <unsigned char*> output, M)
+    fcret = cfastlz.fastlz_decompress(<const uint8_t*> in_buf, N, <uint8_t*> output, M)
 
     # If error occurs, e.g. the compressed data is corrupted or the output buffer is not large enough, then 0 (zero)
     if fcret <=0:
