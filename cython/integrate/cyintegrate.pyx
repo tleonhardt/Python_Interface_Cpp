@@ -2,10 +2,10 @@
 """
 Pure Python code for numerically integrating a function.
 """
-from math import cos
+from libc.math cimport cos
 
 
-def f(x):
+cdef double f(double x):
     """Example function in one variable.
 
     :param x: float - point we wish to evaluate the function at
@@ -14,7 +14,7 @@ def f(x):
     return cos(x)
 
 
-def integrate_f(a, b, N):
+cpdef double integrate_f(double a, double b, int N):
     """Numerically integrate function f starting at point a and going to point b, using N rectangles.
 
     :param a: float - starting point
@@ -22,6 +22,9 @@ def integrate_f(a, b, N):
     :param N: int - number of points to use in the rectangluar approximation to the integral
     :return: float - approximation to the true integral, which improves as N increases
     """
+    cdef double s, dx
+    cdef int i
+
     s = 0.0
     dx = (b-a)/N
     for i in range(N):
