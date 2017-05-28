@@ -3,13 +3,6 @@
 #include <iostream>
 #include <string>
 
-class Logger
-{
-public:
-    virtual ~Logger() { std::cout << "Logger::~Logger()" << std:: endl; }
-    virtual void log(int level, std::string message) { std::cout << "C++ Logger - Level " << level << " message: " << message << std::endl; }
-};
-
 
 enum LOG_LEVEL
 {
@@ -17,6 +10,36 @@ enum LOG_LEVEL
     LOG_WARNING = 30,
     LOG_ERROR = 40
 };
+
+
+class Logger
+{
+public:
+    virtual ~Logger() { std::cout << "Logger::~Logger()" << std:: endl; }
+    virtual void log(int level, std::string message)
+    {
+        std::cout << "C++ Logger - Level: ";
+
+        switch(level)
+        {
+        case LOG_ERROR:
+            std::cout << "ERROR";
+            break;
+        case LOG_WARNING:
+            std::cout << "WARNING";
+            break;
+        case LOG_INFO:
+            std::cout << "INFO";
+            break;
+        default:
+            std::cout << "UNKNOWN";
+            break;
+        }
+
+        std::cout << ",  message: " << message << std::endl;
+    }
+};
+
 
 class Log
 {
