@@ -34,4 +34,4 @@ using a derived class type as implemented in Python.
     * runme.py
     
 ## Excercise
-Fill in the **TODO:** blocks present in **example.i**.
+Fill in the **TODO:** blocks present in **runme.py**.
