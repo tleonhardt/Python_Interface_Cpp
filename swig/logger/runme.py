@@ -36,7 +36,6 @@ if __name__ == '__main__':
     logger.thisown = 0
     log.setLogger(logger)
     log.inf("Hello")
-    log.war("World")
     log.log(5, "Yo")
     log.delLogger()
 
@@ -44,10 +43,18 @@ if __name__ == '__main__':
     print()
     print("Adding and calling a Python Logger")
     print("----------------------------------")
-    # TODO: Add a Python Logger (make sure to call .__disown__() on it
-    # TODO: Set the Logger to this new Python Logger
-    # TODO: Log a mix of ERROR, INFO, and WARNING messages
-    # TODO: Don't forget to delete the logger to prevent a memory leak
+    log.setLogger(PyLogger().__disown__())
+    log.war("World")
+    log.delLogger()
+
+    # Let's do the same but use the weak reference this time.
+    print()
+    print("Adding and calling another Python logger")
+    print("------------------------------------------")
+    logger = PyLogger().__disown__()
+    log.setLogger(logger)
+    log.err("Cross language polymorphism in SWIG rocks!")
+    log.delLogger()
 
     # All done.
     print()
