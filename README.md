@@ -160,3 +160,53 @@ For information on getting all of the necessary prerequisites installed, see
 
 For info on how to build and run each particular example, see the **Readme.md** in the example directory.
 
+# Excercises
+There are a few examples here which are intended as guided exercises to help build your knowledge of how
+to use Cython and SWIG.
+
+The exercises exist on the **master** branch, while the solutions exist on the **solutions** branch.
+
+Most exercises have **TODO:** comments in the locations where they want you to write some code and have 
+instructions in the Readme.md for that exercise.
+
+## Cython Exercises
+
+### Intro to Cython Exercise
+The [integrate](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/integrate) Cython 
+example serves as a good basic introduction to using Cython to optimize existing Python code.  It
+details a relatively typical series of steps which are followed in using Cython for process of 
+progressively optimizing existing Python code.
+
+### Cython for Wrapping
+The [wrap_arrays](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/wrap_arrays) 
+Cython example serves as an introduction to using Cython to wrap existing C code.  It purposely uses
+an example where the C functions take pointers to arrays, so it can help you learn how to generate
+wrapper code for this common type of scenario.  
+
+There are better (more optimal) ways of doing this than presented in the solution.  The solution tries
+to keep it simple.
+
+## SWIG Exercises
+
+### Cross-language Polymorphism in SWIG
+The [logger](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/swig/logger) SWIG example
+serves as an introduction to how to achieve true cross-language polymorphism in SWIG by using directors.
+This allows you to have a base class defined in C++, inherit from this class in Python, and then 
+instantiate a C++ class which takes a pointer to the base class and you pass it a pointer to an instance
+of the derived class and your C++ class will end up calling virtual methods defined in Python.
+
+While this sounds complicated and abstract, it is actually pretty simple to make use of it and is of 
+great practical utility.
+
+As a side benefit, this example also covers how to wrap STL std::string strings and effectively auto-cast
+them to Python str objects.
+
+
+### Using STL Containers in SWIG
+The [fastlz](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/swig/fastlz) SWIG example
+serves as an introduction to how to use STL containers such as vectors in your SWIG Python wrappers.
+
+*WARNING: This example is not yet complete.*
+
+## Solutions
+Solutions to all exercises are in the same location as the exercise, but on the **solutions** branch.
