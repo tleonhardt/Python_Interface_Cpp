@@ -1,26 +1,32 @@
-This code uses SWIG to wrap C functions which take pointers to arrays as both IN and INOUT arguments.
-But it does so by having the user create intermediate C++ wrapper functions which take and
-return std::vector arguments.
-
-
-# Interfacing with C code from Python using SWIG
-Example code for interfacing with C code from Python using SWIG.
+# Wrapping C++ code using STL containers with SWIG
+This code uses SWIG to wrap C++ functions which use STL container classes.  It demonstrates how to wrap
+C++ code which uses STL container class and instantiate STL container wrappers in Python.  In the process 
+it also demonstrates how to link SWIG wrapper code to dynamic libraries.
 
 ## Building
-Build the SWIG wrapper using the following shell script:
+First build the fastlz C compression code into a dynamic library:
+
+    ./build_fastlz_lib.sh
+    
+Then build the SWIG wrapper using the following shell script:
 
     ./build_swig_python_wrapper.sh
 
 ## Evaluating
-Compare the results of a pure Python implementation to that of the SWIG wrapper using:
+Test a full round-trip compression and decompression using the wrapper with py.test
 
-    ./test_swig.py
+    py.test -v
 
 ## Code Files
-* C implementation
+* C compression code which gets built into a dynamic library
     * fastlz.h/.c
+* C++ compression wrapper which wraps the C library and gets wrapped by SWIG
+    * Compress.h/.cpp
 * SWIG
     * Interface File
-        * fastlz.i
+        * Compress.i
     * Distutils script
         * setup.py
+
+## Excercise
+Fill in the **TODO:** blocks present in **test_swig.py**

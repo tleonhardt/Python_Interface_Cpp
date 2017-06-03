@@ -4,7 +4,7 @@
 using the fastlz C library.
 """
 import numpy as np
-import fastlz
+from Compress import VectorUint8, Compress, Decompress
 
 
 def test_compress_and_decompress_roundtrip():
@@ -26,26 +26,31 @@ Section 2
 
 5: The House of Representatives shall chuse their Speaker and other Officers; and shall have the sole Power of Impeachment."""
 
-    # Convert the ntext to a numpy array of uint8 chars
-    text_bytes = np.fromstring(text.encode(), dtype=np.uint8)
-    N = len(text_bytes)
-    M = int(max(1.5*N, 66))
-    compressed = np.zeros(M, dtype=np.uint8)
+    # Convert the text to a VectorUint8
+    text_vec = VectorUint8(text.encode())
 
-    # Compress a known text
-    retval = fastlz.fastlz_compress(text_bytes.data, N, compressed.data)
-    if retval <= 0:
-        print("Error compressing")
+    # Create a vector to store the compressed data
+    compressed_vec = VectorUint8(len(text_vec) * 2)
+
+    # Compress the input text
+    success = Compress(text_vec, compressed_vec)
+    assert success
 
     # Verify that the compressed text is actually smaller than the original
-    assert len(compressed) < len(text_bytes)
+    assert len(compressed_vec) < len(text_vec)
 
+    # Create a vector for the reconstructed text
+    recon_vec = VectorUint8(len(text_vec) * 2)
 
-    # # Decompress the compressed text to reconstruct the original as a numpy array of uint8 chars
-    # reconstructed_bytes = fastlz.fastlz_decompress(compressed)
-    #
-    # # Convert that numpy array back to a Python 3 unicode string
-    # reconstructed = reconstructed_bytes.tobytes().decode()
-    #
-    # # Verify the reconstructed text is the same as the original
-    # assert text == reconstructed
+    # Decmopress the compressed text to reconstruct a vector of original bytes
+    success = Decompress(compressed_vec, recon_vec)
+    assert success
+
+    # Convert the reconstructed text to a bytes
+    recon_bytes = bytes(recon_vec)
+
+    # And finally back to a str
+    reconstructed = recon_bytes.decode()
+
+    # Verify the reconstructed text is the same as the original
+    assert text == reconstructed
