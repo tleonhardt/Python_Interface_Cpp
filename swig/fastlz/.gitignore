@@ -1,5 +1,5 @@
 fastlz_c
-fastlz.py
-fastlz_wrap.c
+Compress.py
+Compress_wrap.cpp
 *.egg-info
 *.o

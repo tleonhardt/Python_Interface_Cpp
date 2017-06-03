@@ -160,6 +160,7 @@ For information on getting all of the necessary prerequisites installed, see
 
 For info on how to build and run each particular example, see the **Readme.md** in the example directory.
 
+
 # Excercises
 There are a few examples here which are intended as guided exercises to help build your knowledge of how
 to use Cython and SWIG.
@@ -201,12 +202,10 @@ great practical utility.
 As a side benefit, this example also covers how to wrap STL std::string strings and effectively auto-cast
 them to Python str objects.
 
-
 ### Using STL Containers in SWIG
 The [fastlz](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/swig/fastlz) SWIG example
-serves as an introduction to how to use STL containers such as vectors in your SWIG Python wrappers.
-
-*WARNING: This example is not yet complete.*
+serves as an introduction to how to use STL containers such as vectors in your SWIG Python wrappers.  Also
+serves as an example of how to get your SWIG wrappers to link to dynamic libraries.
 
 ## Solutions
 Solutions to all exercises are in the same location as the exercise, but on the **solutions** branch.

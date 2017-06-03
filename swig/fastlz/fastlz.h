@@ -23,8 +23,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
-#include <stdint.h>
-
 #ifndef FASTLZ_H
 #define FASTLZ_H
 
@@ -54,7 +52,7 @@ extern "C" {
   The input buffer and the output buffer can not overlap.
 */
 
-int fastlz_compress(const uint8_t* input, int length, uint8_t* output);
+int fastlz_compress(const void* input, int length, void* output);
 
 /**
   Decompress a block of compressed data and returns the size of the
@@ -68,7 +66,7 @@ int fastlz_compress(const uint8_t* input, int length, uint8_t* output);
   more than what is specified in maxout.
  */
 
-int fastlz_decompress(const uint8_t* input, int length, uint8_t* output, int maxout);
+int fastlz_decompress(const void* input, int length, void* output, int maxout);
 
 /**
   Compress a block of data in the input buffer and returns the size of
@@ -92,7 +90,7 @@ int fastlz_decompress(const uint8_t* input, int length, uint8_t* output, int max
   decompressed using the function fastlz_decompress above.
 */
 
-int fastlz_compress_level(int level, const uint8_t* input, int length, uint8_t* output);
+int fastlz_compress_level(int level, const void* input, int length, void* output);
 
 #if defined (__cplusplus)
 }
