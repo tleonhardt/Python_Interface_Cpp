@@ -50,7 +50,7 @@ examples.
 
 ## Cython
 Cython is the C-Extensions for Python module and it is an optimising static transpiler which
-lets you use optional C static types embedded in your Python code and automatically tranlate
+lets you use optional C static types embedded in your Python code and automatically translate
 that to C or C++ code and then automatically compile it.
 
 But all of that happens pretty much behind the scenes, and you are left with code that looks
@@ -72,7 +72,7 @@ SWIG largely automates the process of wrapping existing C/C++ code so it is fast
 to use for that purpose than Cython.
 
 The SWIG documentation can sometimes leave something to be desired, but it is an extremely powerful
-tool which is an excellent choice in many situaitons.
+tool which is an excellent choice in many situations.
 
 SWIG is the granddaddy of all of the tools here.  It has been around for a long time.  Given how
 long it has been around and the wealth of target languages, it is probably the most widely used

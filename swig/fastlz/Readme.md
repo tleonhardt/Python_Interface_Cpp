@@ -28,5 +28,5 @@ Test a full round-trip compression and decompression using the wrapper with py.t
     * Distutils script
         * setup.py
 
-## Excercise
+## Exercise
 Fill in the **TODO:** blocks present in **test_swig.py**

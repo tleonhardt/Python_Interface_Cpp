@@ -35,7 +35,7 @@ coordinated within the setup.py file and handled either by the setuptools or dis
 In this case, Python will automatically know where all of the correct libraries to link against are.
 
 Using CFFI can be a little bit more finicky since it is directly calls into pre-compiled dynamic
-libraries and akes some assumptions regarding the C ABI.  So you really need to make sure you are 
+libraries and makes some assumptions regarding the C ABI.  So you really need to make sure you are 
 using the exact compiler that Python itself was compiled with.
 
 **If you try to use the examples on Windows and run into difficulties, you may wish to setup a Linux

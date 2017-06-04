@@ -33,5 +33,5 @@ using a derived class type as implemented in Python.
 * Test code to run it all
     * runme.py
     
-## Excercise
+## Exercise
 Fill in the **TODO:** blocks present in **runme.py**.

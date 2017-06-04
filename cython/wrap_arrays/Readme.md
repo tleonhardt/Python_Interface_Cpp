@@ -26,7 +26,7 @@ Run pytest unit tests to verify everything is working as intended for the Cython
         * test_cython_wrapper.py
         
         
-## Excercise
+## Exercise
 You need to fill in the **TODO:** blocks in **cfastlz.pxd** and **cyfastlz.pyx**
 
 Some useful things to keep in mind:
