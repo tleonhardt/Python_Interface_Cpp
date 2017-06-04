@@ -26,9 +26,11 @@ Section 2
 
 5: The House of Representatives shall chuse their Speaker and other Officers; and shall have the sole Power of Impeachment."""
 
-    # TODO: Convert the text to a VectorUint8 which can be passed to Compress
+    # Convert the text to a VectorUint8
+    text_vec = VectorUint8(text.encode())
 
-    # TODO: Create a vector to store the compressed data
+    # Create a vector to store the compressed data
+    compressed_vec = VectorUint8(len(text_vec) * 2)
 
     # Compress the input text
     success = Compress(text_vec, compressed_vec)
@@ -37,15 +39,18 @@ Section 2
     # Verify that the compressed text is actually smaller than the original
     assert len(compressed_vec) < len(text_vec)
 
-    # TODO: Create a vector for the reconstructed text
+    # Create a vector for the reconstructed text
+    recon_vec = VectorUint8(len(text_vec) * 2)
 
     # Decmopress the compressed text to reconstruct a vector of original bytes
     success = Decompress(compressed_vec, recon_vec)
     assert success
 
-    # TODO: Convert the reconstructed text to a bytes
+    # Convert the reconstructed text to a bytes
+    recon_bytes = bytes(recon_vec)
 
-    # TODO: And finally back to a str
+    # And finally back to a str
+    reconstructed = recon_bytes.decode()
 
     # Verify the reconstructed text is the same as the original
     assert text == reconstructed
