@@ -61,9 +61,9 @@ Cython.Compiler.Options.annotate = True
 This is equivalent to calling cythonize with the **-a** flag at the command line.
 
 Open the **cyintegrate.html** file in the web browser of your choice.  Yellow lines show code which requires 
-integration with the Python interpreter.  The darker the yellow, the more interactions with the Python
-intepreter.  Any interactions with the Python intepreter slow Cython's generated C/C++ code down.  White lines
-indicate no interaction with the Python intepreter (pure C code).
+interaction with the Python interpreter.  The darker the yellow, the more interactions with the Python
+interpreter.  Any interactions with the Python interpreter slow Cython's generated C/C++ code down.  White lines
+indicate no interaction with the Python interpreter (pure C code).
 
 What you want to do is get rid of as much yellow as possible and end up with as much white as possible.  This
 matters particularly inside loops.  The main way you get rid of these interactions with the Python interpreter
