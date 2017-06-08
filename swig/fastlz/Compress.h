@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstdint>
+#include <stdint.h>
 #include <vector>
 
 // Convenience wrappers around fastlz C functions which use STL vectors instead of C arrays
