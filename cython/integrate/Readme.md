@@ -30,6 +30,12 @@ benchmark their performance using a common configuration.
 NOTE: You need to rebuild your Cython code anytime you make changes to **cyintegrate.pyx**
 
 
+## Step 0 - rename the .py file to .pyx
+The first thing you need to do when using Cython to optimize existing Python code is to rename the
+module you want to optimize to have a **.pyx** extension instead of **.py**.  Then you need to create
+a **setup.py** file which uses the **setuptools** module to Cythonize and compile your code.  These 
+preliminary steps have both already been done for you in this exercise.
+
 ## Step 1 - see how things work to start with
 Cython will give some performance benefit even when compiling Python code without any static type
 declarations.
