@@ -10,7 +10,7 @@ setup(name=name, version=version,
                              sources=["Compress.i", "Compress.cpp"],
                              include_dirs=[],
                              libraries=['fastlz'],
-                             library_dirs=[],
+                             library_dirs=['.'],
                              extra_compile_args=["-std=c++11"],
                              swig_opts=['-c++'])
                    ])
