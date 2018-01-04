@@ -61,8 +61,9 @@ optimizing existing Python code.  But it is also good for providing really high 
 wrappers of existing C/C++ code with a clean Pythonic API.  It just requires you to manually
 do the wrapping, so it involves significantly more work on your part to do so than using SWIG.
 
-The Cython documentation is excellent and there is a great book from OReilly and also some great
-video presentations on YouTube and on Safari.
+The [Cython documentation](http://docs.cython.org/en/latest/) is excellent and there is a great
+[book](https://www.amazon.com/Cython-Programmers-Kurt-W-Smith/dp/1491901551) from OReilly and also some great
+video presentations on [YouTube](https://www.youtube.com/watch?v=gMvkiQ-gOW8&t=14s) and on [Safari](http://shop.oreilly.com/product/0636920046813.do).
 
 ## SWIG
 SWIG is the Simplified Wrapper and Interface Generator.  It is capable of wrapping C and C++
@@ -71,24 +72,25 @@ code/libraries in about 20 different target languages including Python, Java, C#
 SWIG largely automates the process of wrapping existing C/C++ code so it is faster and easier
 to use for that purpose than Cython.
 
-The SWIG documentation can sometimes leave something to be desired, but it is an extremely powerful
-tool which is an excellent choice in many situations.
+The [SWIG documentation](http://www.swig.org/Doc3.0/index.html) can sometimes leave something to be desired, but it is an extremely powerful
+tool which is an excellent choice in many situations.  A professor from the University of Oslo has
+a decent [video tutorial](https://www.youtube.com/watch?v=J-iVTLp6M9I) with [example code](https://github.com/UiO-INF3331/code-snippets/tree/master/mixed/swig) on GitHub.
 
 SWIG is the granddaddy of all of the tools here.  It has been around for a long time.  Given how
 long it has been around and the wealth of target languages, it is probably the most widely used
 of these tools.
 
 ## PyPy
-PyPy is a fast, compliant alternative implementation of the Python language (2.7.13 and 3.5.3) in Python. 
-The normal implementation of Python is in C and is referred to as CPython.  PyPy uses a Just-in-Time (JIT) 
-compiler, so Python programs often run significantly faster on PyPy.  It also employs various memory 
+PyPy is a fast, compliant alternative implementation of the Python language (2.7.13 and 3.5.3) in Python.
+The normal implementation of Python is in C and is referred to as CPython.  PyPy uses a Just-in-Time (JIT)
+compiler, so Python programs often run significantly faster on PyPy.  It also employs various memory
 optimizations compared to CPython.
 
 The major advantage of PyPy is that it can deliver some quick and easy wins.  You don't need to change
 your existing Python code in any way!  You just install PyPy and run your Python program using **pypy**
 instead of **python**.
-    
-The major disadvantage of PyPy is that not all 3rd-party Python libraries work with PyPy.  Detailed 
+
+The major disadvantage of PyPy is that not all 3rd-party Python libraries work with PyPy.  Detailed
 information on which modules are compatible can be found [here](https://pypy.org/compat.html).
 
 ## CFFI
@@ -101,21 +103,23 @@ of these libraries to use to interface with existing C dynamic libraries.  Howev
 performance is decidedly worse than the other options presented here unless it is used in combination
 with PyPy, in which case the performance is truly excellent.
 
-Its real strength lies in 100% compatibility with PyPy and lower overhead present when using CFFI 
+Its real strength lies in 100% compatibility with PyPy and lower overhead present when using CFFI
 with PyPy's JIT.  So it is the go-to choice if you are
 using the PyPy JIT.  That being said, I don't think I would recommend using it if you aren't using
 PyPy because either Cython or SWIG tend to be a better fit for most applications when used with
 the normal CPython implementation of Python.
+
+CFFI has decent [documentation](https://cffi.readthedocs.io/en/latest/) and here is a [tutorial video](https://www.youtube.com/watch?v=ThDFmuXH15k).
 
 ## pybind11
 pybind11 is essentially what arose from the ashes of Boost.Python.  It is the newest of the tools
 presented here, but it is already better than
 Boost.Python ever was.
 
-It only works with modern C++11 compilers.
+It only works with bleeding-edge C++11 compilers.
 
-My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6 
-and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X 
+My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6
+and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X
 10.12.4.
 
 I also could not get it working on either Ubuntu 16.04 or 14.04 with either Python 2.7 or 3.6.
@@ -127,14 +131,16 @@ Given that experience I wouldn't even consider it remotely stable yet.
 The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.  
 So at this time I don't really see a niche for this tool yet.
 
+[pybind11 documentation](http://pybind11.readthedocs.io/en/stable/) is decent and here is a [conference video](https://www.youtube.com/watch?v=jQedHfF1Jfw).
+
 But it does appear to be under very rapid development, so maybe it will get better ...
 
 # Conclusion / Recommendations
 Ok, here are some of my thoughts.  They are my opinions and are hence subjective in nature, though
 they are grounded in my having actually evaluated these tools at length.  
 
-If what you care about most is performance, then Cython is the clear winner by a wide margin.  But on 
-the flip side, this tool has the largest learning curve, at least if you are looking at wrapping 
+If what you care about most is performance, then Cython is the clear winner by a wide margin.  But on
+the flip side, this tool has the largest learning curve, at least if you are looking at wrapping
 existing C++ code.
 
 If what you care about most is productivity, then SWIG is the clear winner if you want to wrap existing
@@ -150,12 +156,12 @@ the other hand, if all of the 3rd party libraries you are using work with PyPy a
 interface with C code (not C++), then the combination of PyPy + CFFI can result in some truly impressive
 performance improvements.
 
-pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse 
+pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse
 than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
 But check back in the future, it is very new and is likely to improve.
 
 # Running Example Code Yourself
-For information on getting all of the necessary prerequisites installed, see 
+For information on getting all of the necessary prerequisites installed, see
 [Prerequisites for Running Example Code](https://github.com/tleonhardt/Python_Interface_Cpp/blob/master/Prerequisites.md).
 
 For info on how to build and run each particular example, see the **Readme.md** in the example directory.
@@ -167,19 +173,19 @@ to use Cython and SWIG.
 
 The exercises exist on the **master** branch, while the solutions exist on the **solutions** branch.
 
-Most exercises have **TODO:** comments in the locations where they want you to write some code and have 
+Most exercises have **TODO:** comments in the locations where they want you to write some code and have
 instructions in the Readme.md for that exercise.
 
 ## Cython Exercises
 
 ### Intro to Cython Exercise
-The [integrate](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/integrate) Cython 
+The [integrate](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/integrate) Cython
 example serves as a good basic introduction to using Cython to optimize existing Python code.  It
-details a relatively typical series of steps which are followed in using Cython for process of 
+details a relatively typical series of steps which are followed in using Cython for process of
 progressively optimizing existing Python code.
 
 ### Cython for Wrapping
-The [wrap_arrays](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/wrap_arrays) 
+The [wrap_arrays](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/wrap_arrays)
 Cython example serves as an introduction to using Cython to wrap existing C code.  It purposely uses
 an example where the C functions take pointers to arrays, so it can help you learn how to generate
 wrapper code for this common type of scenario.  
@@ -192,11 +198,11 @@ to keep it simple.
 ### Cross-language Polymorphism in SWIG
 The [logger](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/swig/logger) SWIG example
 serves as an introduction to how to achieve true cross-language polymorphism in SWIG by using directors.
-This allows you to have a base class defined in C++, inherit from this class in Python, and then 
+This allows you to have a base class defined in C++, inherit from this class in Python, and then
 instantiate a C++ class which takes a pointer to the base class and you pass it a pointer to an instance
 of the derived class and your C++ class will end up calling virtual methods defined in Python.
 
-While this sounds complicated and abstract, it is actually pretty simple to make use of it and is of 
+While this sounds complicated and abstract, it is actually pretty simple to make use of it and is of
 great practical utility.
 
 As a side benefit, this example also covers how to wrap STL std::string strings and effectively auto-cast
