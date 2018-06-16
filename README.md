@@ -35,7 +35,7 @@ with the latest versions of all tools installed using the conda package manager.
 
 The Fibonacci example presented here is pretty trivial.  Your mileage may vary depending on your
 application.  But overall these performance measurements are fairly representative of what you
-may typically expect from each of these tools.  
+may typically expect from each of these tools.
 
 In general whenever you see nested loops in your Python code, that is where you should expect the
 most speedup can be gained by optimizing with C/C++.  Speedups on the order of 1000 are not
@@ -67,7 +67,7 @@ video presentations on [YouTube](https://www.youtube.com/watch?v=gMvkiQ-gOW8&t=1
 
 ## SWIG
 SWIG is the Simplified Wrapper and Interface Generator.  It is capable of wrapping C and C++
-code/libraries in about 20 different target languages including Python, Java, C#, etc.  
+code/libraries in about 20 different target languages including Python, Java, C#, etc.
 
 SWIG largely automates the process of wrapping existing C/C++ code so it is faster and easier
 to use for that purpose than Cython.
@@ -95,7 +95,7 @@ information on which modules are compatible can be found [here](https://pypy.org
 
 ## CFFI
 CFFI is the C Foreign Function Interface for Python.  It is basically an improved version of
-Python's built-in ctypes.  
+Python's built-in ctypes.
 
 It can call functions in a C dynamic library just by writing code inline in Python.  There
 isn't any sort of need for an external wrapper.  Hence, it is the quickest and easiest
@@ -116,28 +116,23 @@ pybind11 is essentially what arose from the ashes of Boost.Python.  It is the ne
 presented here, but it is already better than
 Boost.Python ever was.
 
-It only works with bleeding-edge C++11 compilers.
+It only works with bleeding-edge C++11 compilers.  My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6 and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X
+10.12.4.  I also could not get it working on either Ubuntu 16.04 or 14.04 with either Python 2.7 or 3.6. I was able to get it working on Debian 9 with both Python 2.7 and 3.5 as installed from apt-get.  Given that experience I wouldn't even consider it remotely stable yet.
 
-My experience is that I couldn't get it to work on Mac OS X at all and I tried with both Python 3.6
-and Python 2.7, both from Anaconda distro and using default LLVM compiler from Xcode on Mac OS X
-10.12.4.
-
-I also could not get it working on either Ubuntu 16.04 or 14.04 with either Python 2.7 or 3.6.
-
-I was able to get it working on Debian 9 with both Python 2.7 and 3.5 as installed from apt-get.
-
-Given that experience I wouldn't even consider it remotely stable yet.
-
-The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.  
-So at this time I don't really see a niche for this tool yet.
+The performance is worse than either SWIG or Cython and the ease of use is not as easy to use as SWIG.
+So does a niche exist for pybind11?  pybind11 does make it easy to embedded Python within a C++ project and it is well
+supported on Windows.  Here is a [good video](https://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Embedding-Python-in-a-C-Project) that demonstrates scripting a
+C++ application with Python using pybind11 and Visual Studio 2017.
 
 [pybind11 documentation](http://pybind11.readthedocs.io/en/stable/) is decent and here is a [conference video](https://www.youtube.com/watch?v=jQedHfF1Jfw).
 
-But it does appear to be under very rapid development, so maybe it will get better ...
+pybind11 does appear to be under rapid development, so maybe it will get better in the future; but at this time I can
+only recommend it for embedding Python within a C++ project (though it is probably worth noting that Cython is also
+capable of doing that).
 
 # Conclusion / Recommendations
 Ok, here are some of my thoughts.  They are my opinions and are hence subjective in nature, though
-they are grounded in my having actually evaluated these tools at length.  
+they are grounded in my having actually evaluated these tools at length.
 
 If what you care about most is performance, then Cython is the clear winner by a wide margin.  But on
 the flip side, this tool has the largest learning curve, at least if you are looking at wrapping
@@ -156,9 +151,9 @@ the other hand, if all of the 3rd party libraries you are using work with PyPy a
 interface with C code (not C++), then the combination of PyPy + CFFI can result in some truly impressive
 performance improvements.
 
-pybind11 is an unstable frustrating headache at this juncture.  Also, its performance is worse
-than SWIG, but it is more of a pain to use than SWIG.  So I'd recommend staying away from it for now.
-But check back in the future, it is very new and is likely to improve.
+pybind11 struggles with easy cross-platform compatibility and its performance is worse than SWIG, but it is more of a
+pain to use than SWIG.  So I'd recommend staying away from it for now unless you are looking to embed Python code within
+a C++ project on Windows.
 
 # Running Example Code Yourself
 For information on getting all of the necessary prerequisites installed, see
@@ -188,7 +183,7 @@ progressively optimizing existing Python code.
 The [wrap_arrays](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/cython/wrap_arrays)
 Cython example serves as an introduction to using Cython to wrap existing C code.  It purposely uses
 an example where the C functions take pointers to arrays, so it can help you learn how to generate
-wrapper code for this common type of scenario.  
+wrapper code for this common type of scenario.
 
 There are better (more optimal) ways of doing this than presented in the solution.  The solution tries
 to keep it simple.
