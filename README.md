@@ -210,3 +210,8 @@ serves as an example of how to get your SWIG wrappers to link to dynamic librari
 
 ## Solutions
 Solutions to all exercises are in the same location as the exercise, but on the **solutions** branch.
+
+
+# Presentation
+The repository also has a brief overview [presentation](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/Python_Integration_with_C_C++.pdf) covering the absolute basics of Cython, SWIG, and CFFI as well
+as when you might want to use each one.
