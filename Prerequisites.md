@@ -26,9 +26,7 @@ say "yes" if it asks you if you want to install the command-line tools.
 ### Windows
 There are a number of options for Windows, but by far the simplest is to use the same compiler which
 Python itself was compiled with.  For recent versions of Python released within the past couple years, 
-this is Visual C++ 2015, which comes with Visual Studio 2015.  However, Visual Studio 2017 is now out
-and newer versions of Python will likely be compiled with that.  Unfortunately, to download Visual 
-Studio 2015 at this point requires an MSDN subscription.
+this is the Visual C++ compiler which comes with Visual Studio 2017.
 
 It is relatively easy to use both SWIG and Cython on Windows because all C/C++ compilation can 
 coordinated within the setup.py file and handled either by the setuptools or distutils Python module.
@@ -37,6 +35,9 @@ In this case, Python will automatically know where all of the correct libraries 
 Using CFFI can be a little bit more finicky since it is directly calls into pre-compiled dynamic
 libraries and makes some assumptions regarding the C ABI.  So you really need to make sure you are 
 using the exact compiler that Python itself was compiled with.
+
+See the [WindowsCompliers](https://wiki.python.org/moin/WindowsCompilers) section of the Python Wiki for more 
+information.
 
 **If you try to use the examples on Windows and run into difficulties, you may wish to setup a Linux
 virtual machine (VM) for evaluation purposes since C/C++ compilers are a lot easier to setup on Linux.
