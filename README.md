@@ -213,5 +213,8 @@ Solutions to all exercises are in the same location as the exercise, but on the 
 
 
 # Presentation
-The repository also has a brief overview [presentation](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/Python_Integration_with_C_C++.pdf) covering the absolute basics of Cython, SWIG, and CFFI as well
+The repository also has an overview [presentation](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/Interfacing_C_C++_with_Python.pdf) covering the basics of Cython, SWIG, and CFFI as well
 as when you might want to use each one.
+
+To accompany this presentation, there is a [lab guide](https://github.com/tleonhardt/Python_Interface_Cpp/tree/master/Interfacing_C_C++_with_Python-Exercises.pdf) 
+which provides an overview of the Cython and SWIG hand-on exercises in this repository.
