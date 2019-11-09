@@ -30,8 +30,10 @@ means that code ran twice as fast as the pure Python version.
 | CFFI               |  6      |
 | Python             |  1      |
 
-NOTE: These numbers were measured on a 2013 15" Mac Book Pro using Python 3.6 via Anaconda distro
-with the latest versions of all tools installed using the conda package manager.
+NOTE: These numbers were originally measured on a 2013 15" Mac Book Pro using Python 3.6 via Anaconda distro
+with the latest versions of all tools installed using the conda package manager.  I have more recently measured
+using a Python 3.7 virtual environment via [Pipenv](https://github.com/pypa/pipenv) and confirmed that they
+stayed approximately the same and relative rankings in terms of performance are identical.
 
 The Fibonacci example presented here is pretty trivial.  Your mileage may vary depending on your
 application.  But overall these performance measurements are fairly representative of what you
@@ -154,6 +156,13 @@ performance improvements.
 pybind11 struggles with easy cross-platform compatibility and its performance is worse than SWIG, but it is more of a
 pain to use than SWIG.  So I'd recommend staying away from it for now unless you are looking to embed Python code within
 a C++ project on Windows.
+
+## Updates for 2019
+Recent re-evaluation of all these options firmly confirms my original conclusions.  `Cython` and `SWIG` are both awesome 
+with distinct tradeoffs.  The combination of `PyPy` + `CFFI` is attractive and shows a lot of potential.  While the 
+cross-platform compatibility issues previously seen with `pybind11` appear to have been resolved, I still can't see a
+use case for which it would be superior to one of the other options; but it has a ton of stars on GitHub so perhaps I 
+am missing something?
 
 # Running Example Code Yourself
 For information on getting all of the necessary prerequisites installed, see
