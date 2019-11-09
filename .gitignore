@@ -93,3 +93,7 @@ ENV/
 
 # IntelliJ IDEs such as PyCharm
 .idea
+
+# Pipenv
+Pipfile.lock
+.venv

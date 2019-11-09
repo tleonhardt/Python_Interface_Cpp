@@ -47,15 +47,27 @@ We recommend using
 
 
 ## Python and Other Tools
-By far the easiest way to get all of the tools installed and setup is by using the Anaconda Python
+
+### Pipenv
+[Pipenv](https://github.com/pypa/pipenv) is an easy way to install compatible versions of `cffi`, `cython`, and 
+`pybind11`.  Once `pipenv` in installed, these other packages can be installed in a virtual environment using:
+```shell script
+pipenv install
+```  
+
+Then this Python virtual environment can be entered using:
+```shell script
+pipenv shell
+```
+
+### Anaconda Python
+Another easy way to get all of the tools installed and setup is by using the Anaconda Python
 distribution.  This is a free distribution of Python available for Windows, Mac OS X, and Linux which
 comes with a couple hundred of the most common and useful Python modules pre-installed including Cython
 and CFFI.  It also comes with the ``conda`` package manager which can be used to install additional
 tools such as SWIG.
 
-## Anaconda Python
-Download the latest version of [Anaconda](https://www.continuum.io/downloads).  Either the Python 3.6 or
-Python 2.7 version should be fine, but we recommend the Python 3.6 version.
+Download the latest version of [Anaconda](https://www.continuum.io/downloads).  We recommend Python 3.6 or newer.
 
 Install Anaconda per the instructions and let it modify your .bashrc, .bash_profile, or path accordingly.
 NOTE: Do not use ``sudo`` to install Anaconda, just install it as a normal user.
@@ -63,11 +75,17 @@ NOTE: Do not use ``sudo`` to install Anaconda, just install it as a normal user.
 This also installs Cython and CFFI.
 
 ## SWIG
-Now that Anaconda is installed, you can use the included **conda** package manager to install SWIG.  Do
+If Anaconda is installed, you can use the included **conda** package manager to install SWIG.  Do
 the following in a command-line terminal:
 
 ```bash
 conda install swig
+```
+
+Alternatively, on macOS you can use the Homebrew package manager to install SWIG:
+
+```shell script
+brew install swig
 ```
 
 ## PyPy
